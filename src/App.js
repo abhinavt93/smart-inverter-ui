@@ -96,7 +96,7 @@ class App extends Component
                 <Card Value={items.powerConsumedPerDay} Color="red" Unit="Wh" Heading = "Power Consumed Per Day"/>
               </Button>
 
-              <Button onClick={() => this.openPopup("", 0) }>
+              <Button onClick={() => this.openPopup("inputbatteryPerc", 0) }>
                 <Card Value={items.batteryPerc} Unit="%" Heading = "Battery"/>
               </Button>
 
