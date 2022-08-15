@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from "@mui/material/Grid"
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { display } from '@mui/system';
-import { Button } from '@mui/material';
-import { Public } from '@mui/icons-material';
 import '../App.js';
-import {useState} from 'react';
 
 
 const Card = (props) => {
     var foregroundColor, backgroundColor;
 
-    const [buttonPopup, setButtonPopup] = useState(false);
-
-    if(props.Color == "green")
+    if(props.Color === "green")
     {
         foregroundColor = "#1E731D";
         backgroundColor = "#D6EBD7";
     }
-    else if(props.Color == "red")
+    else if(props.Color === "red")
     {
         foregroundColor = "#921313";
         backgroundColor = "#F8D9D9";
