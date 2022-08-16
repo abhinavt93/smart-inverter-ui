@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button } from '@mui/material';
 import './ChartPopup.css'
 import CloseIcon from '@mui/icons-material/Close';
-// import {Chart, ArcElement} from 'chart.js'
 import { Line } from 'react-chartjs-2';
 import RowRadioButtonsGroup from './RowRadioButtonsGroup.tsx';
 import Chart from 'chart.js/auto';
