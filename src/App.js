@@ -5,6 +5,15 @@ import Card from './components/Card';
 import Grid from "@mui/material/Grid"
 import MenuAppBar from './components/MenuAppBar.tsx';
 import ChartPopup from './components/ChartPopup.js';
+import { styled, createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  typography: {
+    button: {
+      textTransform: "none"
+    }
+  }
+});
 
 
 class App extends Component
@@ -54,14 +63,14 @@ class App extends Component
     {
       return <div>Loading.....</div>
     }
-    
     else{
       return (
         <div className="App">
           <MenuAppBar/>
+          <ThemeProvider theme={theme}>
+          
           <Container sx = {{paddingTop: 2}}>
             {/* <h4>Logged at: {items.loggedAt}</h4> */}
-            {/* <Grid container spacing={2} > */}
             <Grid >
               <Button onClick={() => this.openPopup("avgSolarOutputWatts", 0) }>
                 <Card Value={items.currentSolarOutputWatts} Color="green" Unit={items.currentSolarOutputWattsUnit} Heading = "Current Solar Output"/>
@@ -105,7 +114,7 @@ class App extends Component
             </Grid>
             
           </Container>
-
+          </ThemeProvider>
           <ChartPopup trigger= {this.state.openPopup} defaultRadioButtonValue= {this.state.defaultRadioButtonValue} setCloseTrigger = {this} >
             <h3>My Popup</h3>
           </ChartPopup>
