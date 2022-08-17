@@ -1,26 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from "@mui/material/Grid"
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { display } from '@mui/system';
-import { Button } from '@mui/material';
-import { Public } from '@mui/icons-material';
 import '../App.js';
-import {useState} from 'react';
 
+  
 
 const Card = (props) => {
     var foregroundColor, backgroundColor;
 
-    const [buttonPopup, setButtonPopup] = useState(false);
-
-    if(props.Color == "green")
+    if(props.Color === "green")
     {
         foregroundColor = "#1E731D";
         backgroundColor = "#D6EBD7";
     }
-    else if(props.Color == "red")
+    else if(props.Color === "red")
     {
         foregroundColor = "#921313";
         backgroundColor = "#F8D9D9";
@@ -31,9 +26,12 @@ const Card = (props) => {
         backgroundColor = "#E2DDAD";
     }
 
+    
+
+
     return (
-        <Grid item xs={3} sx={{marginTop:2}}>
-            {/* <Button onClick={() => setButtonPopup(true) }> */}
+        
+            <Grid item xs={3} sx={{marginTop:2}}>
                 <Paper elevation={10} sx={{
                     height: 130,
                     width: 250,
@@ -54,14 +52,12 @@ const Card = (props) => {
                         {props.Unit}  
                         </Typography>
                     </Box>
-                    <Typography align='center' variant='caption' component='h1' sx={{paddingTop: 4}}> 
+                    <Typography align='center' variant='subtitle2' component='h1' sx={{paddingTop: 3}}> 
                         {props.Heading}
                     </Typography>
                 </Paper>
-                
-            {/* </Button>
-            <ChartPopup trigger= {buttonPopup} ><h3>My Popup</h3></ChartPopup> */}
-        </Grid>
+            </Grid>
+        
         
     );
 }

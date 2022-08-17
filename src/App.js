@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Card from './components/Card';
 import Grid from "@mui/material/Grid"
 import MenuAppBar from './components/MenuAppBar.tsx';
 import ChartPopup from './components/ChartPopup.js';
+import { styled, createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  typography: {
+    button: {
+      textTransform: "none"
+    }
+  }
+});
 
 
 class App extends Component
@@ -55,49 +63,49 @@ class App extends Component
     {
       return <div>Loading.....</div>
     }
-    
     else{
       return (
         <div className="App">
           <MenuAppBar/>
-          <Container sx = {{paddingTop: 2}}>
+          <ThemeProvider theme={theme}>
           
-            {/* <Grid container spacing={2} > */}
+          <Container sx = {{paddingTop: 2}}>
+            {/* <h4>Logged at: {items.loggedAt}</h4> */}
             <Grid >
               <Button onClick={() => this.openPopup("avgSolarOutputWatts", 0) }>
-                <Card Value={items.currentSolarOutputWatts} Color="green" Unit="Watts" Heading = "Current Solar Output"/>
+                <Card Value={items.currentSolarOutputWatts} Color="green" Unit={items.currentSolarOutputWattsUnit} Heading = "Current Solar Output"/>
               </Button>
 
               <Button onClick={() => this.openPopup("avgLoadWatts", 0) }>
-                <Card Value={items.currentLoadWatts} Color="red" Unit="Watts" Heading = "Current Load"/>
+                <Card Value={items.currentLoadWatts} Color="red" Unit={items.currentLoadWattsUnit} Heading = "Current Load"/>
               </Button>
 
               <Button onClick={() => this.openPopup("solarGeneratedWh" , 2) }>
-                <Card Value={items.powerGeneratedThisMonth} Color="green" Unit="Wh" Heading = "Power Generated This Month"/>
+                <Card Value={items.powerGeneratedThisMonth} Color="green" Unit={items.powerGeneratedThisMonthUnit} Heading = "Power Generated This Month"/>
               </Button>
 
               <Button onClick={() => this.openPopup("powerConsumedWh", 2) }>
-                <Card Value={items.powerConsumedThisMonth} Color="red" Unit="Wh" Heading = "Power Consumed This Month"/>
+                <Card Value={items.powerConsumedThisMonth} Color="red" Unit={items.powerConsumedThisMonthUnit} Heading = "Power Consumed This Month"/>
               </Button>
 
-              <Button onClick={() => this.openPopup("solarGeneratedWh", 0) }>
-                <Card Value={items.powerGeneratedToday} Color="green" Unit="Wh" Heading = "Power Generated Today"/>
+              <Button onClick={() => this.openPopup("solarGeneratedWh", 1) }>
+                <Card Value={items.powerGeneratedToday} Color="green" Unit={items.powerGeneratedTodayUnit} Heading = "Power Generated Today"/>
               </Button>
 
-              <Button onClick={() => this.openPopup("powerConsumedWh", 0) }>
-                <Card Value={items.powerConsumedToday} Color="red" Unit="Wh" Heading = "Power Consumed Today"/>
+              <Button onClick={() => this.openPopup("powerConsumedWh", 1) }>
+                <Card Value={items.powerConsumedToday} Color="red" Unit={items.powerConsumedTodayUnit} Heading = "Power Consumed Today"/>
               </Button>
 
-              <Button onClick={() => this.openPopup("solarGeneratedWh", 0) }>
-                <Card Value={items.powerGeneratedPerDay} Color="green" Unit="Wh" Heading = "Power Generated Per Day"/>
+              <Button onClick={() => this.openPopup("solarGeneratedWh", 2) }>
+                <Card Value={items.powerGeneratedPerDay} Color="green" Unit={items.powerGeneratedPerDayUnit} Heading = "Power Generated Per Day"/>
               </Button>
 
-              <Button onClick={() => this.openPopup("powerConsumedWh", 0) }>
-                <Card Value={items.powerConsumedPerDay} Color="red" Unit="Wh" Heading = "Power Consumed Per Day"/>
+              <Button onClick={() => this.openPopup("powerConsumedWh", 2) }>
+                <Card Value={items.powerConsumedPerDay} Color="red" Unit={items.powerConsumedPerDayUnit} Heading = "Power Consumed Per Day"/>
               </Button>
 
-              <Button onClick={() => this.openPopup("", 0) }>
-                <Card Value={items.batteryPerc} Unit="%" Heading = "Battery"/>
+              <Button onClick={() => this.openPopup("inputbatteryPerc", 0) }>
+                <Card Value={items.batteryPerc} Unit={items.batteryPercUnit} Heading = "Battery"/>
               </Button>
 
               <Button onClick={() => this.openPopup("", 0) }>
@@ -106,7 +114,7 @@ class App extends Component
             </Grid>
             
           </Container>
-
+          </ThemeProvider>
           <ChartPopup trigger= {this.state.openPopup} defaultRadioButtonValue= {this.state.defaultRadioButtonValue} setCloseTrigger = {this} >
             <h3>My Popup</h3>
           </ChartPopup>

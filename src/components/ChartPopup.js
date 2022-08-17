@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import Paper from '@mui/material/Paper';
-import Grid from "@mui/material/Grid"
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { display } from '@mui/system';
 import { Button } from '@mui/material';
-import { Construction, Public } from '@mui/icons-material';
 import './ChartPopup.css'
 import CloseIcon from '@mui/icons-material/Close';
-// import {Chart, ArcElement} from 'chart.js'
-import { Bar, Line, Pie } from 'react-chartjs-2';
-// import {CategoryScale} from 'chart.js'; 
-import Chart from 'chart.js/auto';
+import { Line } from 'react-chartjs-2';
 import RowRadioButtonsGroup from './RowRadioButtonsGroup.tsx';
-//import RowRadioButtonsGroup  from './components/RowRadioButtonsGroup.js';
-
+import Chart from 'chart.js/auto';
 class ChartPopup extends Component
 {
     constructor(props)
@@ -31,7 +21,7 @@ class ChartPopup extends Component
     
     componentDidUpdate(prevProps)
     {
-        if(this.props.trigger != "" && prevProps.trigger != this.props.trigger)
+        if(this.props.trigger !== "" && prevProps.trigger !== this.props.trigger)
         {
             this.setState({inputSelected: this.props.defaultRadioButtonValue});
             this.getData();
@@ -135,7 +125,7 @@ class ChartPopup extends Component
     }
 
     render(){
-        return (this.props.trigger != "") ? (
+        return (this.props.trigger !== "") ? (
             
             <div className='chartPopup'>
                 
